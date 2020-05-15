@@ -16,9 +16,9 @@ std::string normalize_string(const std::string &s) {
 bool is_palindrome(const std::string &s) {
 	std::string new_string {normalize_string(s)};
 	std::deque<char> char_dec {};
-	std::copy(s.begin(), s.end(), std::front_inserter(char_dec));
+	std::copy(new_string.begin(), new_string.end(), std::front_inserter(char_dec));
 	for(size_t i {0}; i < char_dec.size(); i++) {
-		if(char_dec.at(i) != s[i])
+		if(char_dec.at(i) != new_string[i])
 			return false;
 	} 
 	return true;
@@ -32,7 +32,7 @@ int main() {
 	std::cout << std::boolalpha;
 	std::cout << std::setw(8) << std::left << "Result" << std::setw(8) << std::left << "String" << std::endl;
 	for(const auto &s : test_strings) {
-		std::cout << std::setw(8) << std::left << is_palindrome(s) << std::setw(8) << std::left << std::endl;
+		std::cout << std::setw(8) << std::left << is_palindrome(s) << std::setw(8) << std::left << s << std::endl;
 	}
 	std::cout << std::endl;
 	return 0;
