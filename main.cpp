@@ -4,10 +4,18 @@
 #include <string>
 #include <vector>
 #include <cctype>
+#include <algorithm>
+
+std::string normalize_string(const std::string &s) {
+	std::string new_string {};
+	std::copy_if(s.begin(), s.end(), std::back_inserter(new_string), [](unsigned char c) {return std::isalpha(c);});
+	return new_string;
+}
 
 bool is_palindrome(const std::string &s) {
+	std::string new_string {normalize_string(s)};
 	std::deque<char> char_dec {};
-	std::copy(s.begin(), s.end(), std::front_inserter(char_dec));
+	std::copy_if(s.begin(), s.end(), std::front_inserter(char_dec));
 	for(size_t i {0}; i < char_dec.size(); i++) {
 		if(char_dec.at(i) != s[i])
 			return false;
