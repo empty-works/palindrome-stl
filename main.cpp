@@ -32,7 +32,7 @@ int main() {
 	std::cout << std::boolalpha;
 	std::cout << std::setw(8) << std::left << "Result" << std::setw(8) << std::left << "String" << std::endl;
 	for(const auto &s : test_strings) {
-		std::cout << std::setw(8) << std::left << is_palindrome(s) << std::endl;
+		std::cout << std::setw(8) << std::left << is_palindrome(s) << std::setw(8) << std::left << std::endl;
 	}
 	std::cout << std::endl;
 	return 0;
