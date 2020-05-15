@@ -6,10 +6,16 @@
 #include <cctype>
 
 bool is_palindrome(const std::string &s) {
-		
-}
+	std::deque<char> char_dec {};
+	std::copy(s.begin(), s.end(), std::front_inserter(char_dec));
+	for(size_t i {0}; i < char_dec.size(); i++) {
+		if(char_dec.at(i) != s[i])
+			return false;
+	} 
+	return true;
+};
 
-int main {
+int main() {
 	std::vector<std::string> test_strings {"a", "aa", "aba", "abba", "abbcbba", "ab", "abc", "radar", "bob", "ana", 
 		"avid diva", "Amore, Roma", "A Toyota's a toyota", "A Santa at NASA", "C++",
 		"A man, a plan, a cat, a ham, a yak, a yam, a hat, a canal-Panama!", "This is a palindrome", "palindrome"};
