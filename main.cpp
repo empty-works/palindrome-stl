@@ -9,13 +9,15 @@
 std::string normalize_string(const std::string &s) {
 	std::string new_string {};
 	std::copy_if(s.begin(), s.end(), std::back_inserter(new_string), [](unsigned char c) {return std::isalpha(c);});
+	std::transform(new_string.begin(), new_string.end(), new_string.begin(), [](unsigned char c) {return std::toupper(c);});
 	return new_string;
 }
 
 bool is_palindrome(const std::string &s) {
 	std::string new_string {normalize_string(s)};
+	std::cout << new_string << std::endl;
 	std::deque<char> char_dec {};
-	std::copy_if(s.begin(), s.end(), std::front_inserter(char_dec));
+	std::copy(s.begin(), s.end(), std::front_inserter(char_dec));
 	for(size_t i {0}; i < char_dec.size(); i++) {
 		if(char_dec.at(i) != s[i])
 			return false;
